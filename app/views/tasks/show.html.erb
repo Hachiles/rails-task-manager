@@ -1,0 +1,16 @@
+<div class="container">
+  <h2><%= @task.title.capitalize %></h2>
+  <p><%= @task.details %></p>
+  <p>
+    <% if @task.completed %>
+      <input type="checkbox" id="task" checked disabled>
+      <label for="task"> <%= "This task is completed" %> </label><br>
+    <% else %>
+      <input type="checkbox" id="task" disabled>
+      <label for="task"> <%= "This task is not completed yet" %> </label><br>
+    <% end %>
+  </p>
+<%= link_to "Edit task", "/tasks/#{@task.id}/edit" %><br>
+<%= link_to "Delete task", task_path(@task), method: :delete, data: { confirm: "Are you sure you want to delete #{@task.title.capitalize}?" } %><br>
+<%= link_to "Back to the list", '/tasks' %>
+</div>
